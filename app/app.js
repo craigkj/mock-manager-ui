@@ -3,10 +3,10 @@ var mockAdminApp = angular.module('mockAdminApp', ['ui.bootstrap']);
 mockAdminApp.controller("templateController", ['$scope', '$http', '$modal', function($scope, $http, $modal) {
 
   $scope.templates = [];
-  $scope.mockingServiceEndpoints = ["http://localhost:8080/templates", "http://mockface.int.cloud.bbc.co.uk/templates"]
+  $scope.mockingServiceEndpoints = properties.endpoints
   $scope.mockingServiceEndpoint = $scope.mockingServiceEndpoints[0];
   $scope.modalContent = {}
-
+  
   var updateTemplateList = function() {
       $http({method: 'GET', url: $scope.mockingServiceEndpoint}).
         success(function(data, status, headers, config) {
