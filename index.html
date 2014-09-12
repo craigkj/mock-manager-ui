@@ -1,0 +1,101 @@
+<html>
+    <head>
+        <title>Mock Admin App</title>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <meta charset="utf-8">
+        <!-- <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'> -->
+        <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro|Alegreya+Sans:100|Roboto+Slab:100|Exo+2:200|Roboto|Raleway:200' rel='stylesheet' type='text/css'>
+        <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+        <script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
+        <link href="app/app.css" rel="stylesheet">
+        <!--[if lt IE 9]>
+        <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+        <script src="bower_components/jquery/dist/jquery.min.js"></script>
+        <script src="bower_components/angular/angular.min.js"></script>
+        <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+        <script src="app/app.js"></script>
+    </head>
+
+    <body ng-app="mockAdminApp">
+      <div class="container-fluid">
+        <div ng-controller="templateController">
+
+          <div class="header" >
+            <div class="row header-row">
+              <div class="col-md-8">
+                <h1>
+                Mockface Admin
+                </h1>
+              </div>
+              <div class="col-md-4">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-8">
+                <h2>
+                    View Templates
+                </h2>
+              </div>
+              <div class="col-md-4">
+                <div class="site-select">
+                  <select class="form-control" ng-model="mockingServiceEndpoint" ng-options="endpoint for endpoint in mockingServiceEndpoints" ng-change="updateSelected()"></select>
+                </div>
+              </div>
+            </div>
+          </div>
+          <hr />
+
+          <table class="table table-striped">
+            <tr>
+              <th>Endpoint</th>
+              <th>Content Type</th>
+              <th>Query Params</th>
+              <th>Required Param Values</th>
+              <th>Content</th>
+              <th>Raw</th>
+            </tr>
+            <tr ng-repeat="template in templates">
+              <td>
+                {{template.id.endpoint}}
+              </td>
+              <td>
+                {{template.id.contentType}}
+              </td>
+              <td>
+                <span ng-repeat="param in template.id.queryParameters">
+                  {{param}},
+                </span>
+              </td>
+              <td>
+                <span ng-repeat="param in template.id.reqParameters">
+                  {{param}},
+                </span>
+              </td>
+              <td>
+                <span class="see-more"><a href="" ng-click="openModal(template.content, 'Template Content')">View</a></span>
+              </td>
+              <td>
+                <span class="see-more"><a href="" ng-click="openModal(template, 'Raw Template JSON')">View</a></span>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+
+      <!-- Template for modal content -->
+      <script type="text/ng-template" id="modalContent.html">
+          <div class="modal-header">
+              <h3 class="modal-title">{{title}}</h3>
+          </div>
+          <div class="modal-body">
+              <pre class="prettyprint">{{selected}}</pre>
+          </div>
+          <div class="modal-footer">
+              <button class="btn btn-primary" ng-click="ok()">Done</button>
+          </div>
+      </script>
+
+    </body>
+</html>

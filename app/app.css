@@ -1,0 +1,48 @@
+
+.container-fluid {
+  background: #fefefe;
+  font-family: 'Raleway', sans-serif;
+  color: #444;
+}
+
+.header-row {
+  background-color: #16a085
+}
+
+.header h2 {
+  margin-top: 10px;
+}
+
+.header h1 {
+  color: #fff;
+  margin-top: 10px;
+}
+
+.site-select {
+  margin-top: 10px;
+}
+
+table {
+  margin-top: 10px;
+  }
+
+table, td, th{
+  border: 1px solid #b8b8b8;
+  border-collapse: collapse;
+  font-weight: normal;
+}
+
+td, th{
+  padding: 2px;
+}
+
+table.table.table-striped tr th {
+  background-color: #f0f0f0;
+}
+
+.content-cell {
+  display: inline-block;
+  height: 20px;
+  width: 100px;
+  overflow: hidden;
+}
